@@ -6,6 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -40,6 +41,8 @@ public class Main extends JavaPlugin
 		Bukkit.getServer().getPluginManager().registerEvents(new KickListener(), plugin);
 		Bukkit.getServer().getPluginManager().registerEvents(new QuitListener(), plugin);
 		Bukkit.getServer().getPluginManager().registerEvents(new SpawnListener(), plugin);
+		
+		Bukkit.getLogger().info("["+pluginName+"] Listenered registered");
 
 		// Loads all player radiation levels into hashmap
 		Radiation.loadToHashMap();
@@ -71,6 +74,23 @@ public class Main extends JavaPlugin
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) 
     {
+    	
+    	if (cmd.getName().equalsIgnoreCase("rlevel")) {
+    		
+    		Player player = (Player) sender;
+    		double radiationlevel = Radiation.get(player);
+    		sender.sendMessage("Your radiation level is " + radiationlevel);
+    		return true;
+    	}
+    	
+    	if (cmd.getName().equalsIgnoreCase("world")) {
+    		
+    		Player player = (Player) sender;
+    		double radiationlevel = Radiation.get(player);
+    		sender.sendMessage("Your radiation level is " + radiationlevel);
+    		return true;
+    	}
+    	
     	return false;
     }
     @Override

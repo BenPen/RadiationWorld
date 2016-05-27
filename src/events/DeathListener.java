@@ -24,5 +24,6 @@ public class DeathListener implements Listener
 		
 		// Clears player radiation
 		Radiation.set(player, 0.0);
+		player.setMaxHealth(20);
 	}
 }

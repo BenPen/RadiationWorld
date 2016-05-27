@@ -8,3 +8,6 @@ main: RadiationWorld.Main
 database: false
 
 commands:
+    rlevel:
+        Description: Gets your radiation level
+        usage: /<command>
